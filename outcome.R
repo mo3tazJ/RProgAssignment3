@@ -1,6 +1,7 @@
 ## Part 1
 ## Plot the 30-day mortality rates for heart attack
 
+# Reading data from csv file
 outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
 # Some exploratory stuff
 # head(outcome)
