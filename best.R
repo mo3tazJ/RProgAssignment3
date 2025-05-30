@@ -26,6 +26,25 @@ best <- function(state, outcome){
              , tolower(sapply(colnames(data), gsub, pattern = "^Hospital 30-Day Death \\(Mortality\\) Rates from ", replacement = "" ))
     )
     
-    ## Return hospital name in that state with lowest 30-day death
-    ## rate
+    #Filter by state
+    fdata <- data[state == chosen_state]
+    
+    # Columns indices to keep
+    col_indices <- grep(paste0("hospital name|state|^",outcome), colnames(data))
+    
+    # Filtering out unnecessary data 
+    fdata <- fdata[, .SD ,.SDcols = col_indices]
+    
+    # Find out what class each column is 
+    # sapply(fdata,class)
+    fdata[, outcome] <- fdata[,  as.numeric(get(outcome))]
+    
+    # Removing Missing Values for numerical datatype (outcome column)
+    output <- fdata[complete.cases(fdata),]
+    
+    # Order Column to Top 
+    output <- output[order(get(outcome), `hospital name`)]
+    
+    # Return hospital name in that state with lowest 30-day death rate
+    return(output[, "hospital name"][1])
 }
