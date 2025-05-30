@@ -9,7 +9,7 @@ best <- function(state, outcome){
     outcome <- tolower(outcome)
     choosen_state <- state
     
-    # Check that state and outcome are valid
+    # Check if state and outcome are valid
     if(!chosen_state %in% unique(data[["State"]])){
         stop("Invalid State")
     }
