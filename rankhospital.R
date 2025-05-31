@@ -17,6 +17,12 @@ rankhospital <- function(state, outcome, num = "best") {
         stop("Invalid Outcome")
     }
     
+    # Renaming Considered Columns to be less verbose and lowercase
+    setnames(data
+             , tolower(sapply(colnames(data), gsub, pattern = "^Hospital 30-Day Death \\(Mortality\\) Rates from ", replacement = "" ))
+    )
+    
+    
     ## Return hospital name in that state with the given rank 30-day death rate
     
     
