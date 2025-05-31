@@ -21,7 +21,7 @@ best <- function(state, outcome){
         stop("Invalid Outcome")
     }
 
-    # Renaming Columns to be less verbose and lowercase
+    # Renaming Considered Columns to be less verbose and lowercase
     setnames(data
              , tolower(sapply(colnames(data), gsub, pattern = "^Hospital 30-Day Death \\(Mortality\\) Rates from ", replacement = "" ))
     )
