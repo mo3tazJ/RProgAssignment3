@@ -11,7 +11,7 @@ best <- function(state, outcome){
     
     # Normalizing the arguments (outcome and state)
     outcome <- tolower(outcome)
-    choosen_state <- state
+    chosen_state <- state
     
     # Check if state and outcome are valid
     if(!chosen_state %in% unique(data[["State"]])){
