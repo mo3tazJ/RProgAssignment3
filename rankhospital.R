@@ -38,6 +38,8 @@ rankhospital <- function(state, outcome, num = "best") {
     # Removing Missing Values for numerical datatype (outcome column)
     output <- fdata[complete.cases(fdata),]
     
+    # Order Column to Top 
+    output <- output[order(get(outcome), `hospital name`)]
     
     
     ## Return hospital name in that state with the given rank 30-day death rate
