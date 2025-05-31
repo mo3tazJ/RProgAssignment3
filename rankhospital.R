@@ -31,6 +31,14 @@ rankhospital <- function(state, outcome, num = "best") {
     # Filtering out unnecessary data 
     fdata <- fdata[, .SD ,.SDcols = col_indices]
     
+    # Find out what class each column is 
+    # sapply(fdata,class)
+    fdata[, outcome] <- fdata[,  as.numeric(get(outcome))]
+    
+    # Removing Missing Values for numerical datatype (outcome column)
+    output <- fdata[complete.cases(fdata),]
+    
+    
     
     ## Return hospital name in that state with the given rank 30-day death rate
     
