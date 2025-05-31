@@ -14,6 +14,11 @@ rankall <- function(outcome, num = "best") {
         stop("Invalid Outcome")
     }
     
+    # Columns indices to keep
+    col_indices <- grep(paste0("hospital name|state|^",outcome), colnames(data))
+    
+    
+    
     ## Check that state and outcome are valid
     ## For each state, find the hospital of the given rank
     ## Return a data frame with the hospital names and the
