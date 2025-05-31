@@ -41,8 +41,17 @@ rankhospital <- function(state, outcome, num = "best") {
     # Order Column to Top 
     output <- output[order(get(outcome), `hospital name`)]
     
+    output <- output[,  .(`hospital name` = `hospital name`, state = state, rate = get(outcome), Rank = .I)]
+    
+    if (num == "best"){
+        return(output[1,`hospital name`])
+    }
+    
+    if (num == "worst"){
+        return(output[.N,`hospital name`])
+    }
     
     ## Return hospital name in that state with the given rank 30-day death rate
-    
+    return(output[num,`hospital name`])
     
 }
