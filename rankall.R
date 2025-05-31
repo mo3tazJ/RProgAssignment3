@@ -9,6 +9,10 @@ rankall <- function(outcome, num = "best") {
     # Normalizing the argument (outcome)
     outcome <- tolower(outcome)
 
+    # Check if state and outcome are valid
+    if(!outcome %in% c("heart attack", "heart failure", "pneumonia")){
+        stop("Invalid Outcome")
+    }
     
     ## Check that state and outcome are valid
     ## For each state, find the hospital of the given rank
