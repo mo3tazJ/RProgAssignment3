@@ -9,8 +9,13 @@ rankhospital <- function(state, outcome, num = "best") {
     outcome <- tolower(outcome)
     chosen_state <- state
     
-    ## Check that state and outcome are valid
-    
+    # Check if state and outcome are valid
+    if(!chosen_state %in% unique(data[["State"]])){
+        stop("Invalid State")
+    }
+    if(!outcome %in% c("heart attack", "heart failure", "pneumonia")){
+        stop("Invalid Outcome")
+    }
     
     ## Return hospital name in that state with the given rank 30-day death rate
     
