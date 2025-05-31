@@ -22,6 +22,15 @@ rankhospital <- function(state, outcome, num = "best") {
              , tolower(sapply(colnames(data), gsub, pattern = "^Hospital 30-Day Death \\(Mortality\\) Rates from ", replacement = "" ))
     )
     
+    #Filter by state
+    fdata <- data[state == chosen_state]
+    
+    # Columns indices to keep
+    col_indices <- grep(paste0("hospital name|state|^",outcome), colnames(data))
+    
+    # Filtering out unnecessary data 
+    fdata <- fdata[, .SD ,.SDcols = col_indices]
+    
     
     ## Return hospital name in that state with the given rank 30-day death rate
     
