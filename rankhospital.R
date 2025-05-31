@@ -5,6 +5,10 @@ rankhospital <- function(state, outcome, num = "best") {
     ## Read outcome data
     data <- data.table::fread('outcome-of-care-measures.csv')
     
+    # Normalizing the arguments (outcome and state)
+    outcome <- tolower(outcome)
+    chosen_state <- state
+    
     ## Check that state and outcome are valid
     
     
